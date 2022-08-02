@@ -29,17 +29,18 @@ class Solution:
         # return type: list[list[int]]
 
         # TODO: Write code below to return a nested list with the solution to the prompt
-        ihategrandprix = [[1]]
+        grandprix_is_too_hard = []
 
-        for line in range(2, rows+2):
-            newline = [1]
-            for i in range(1, line-1):
-                newline.append(ihategrandprix[-1][i-1] + ihategrandprix[-1][i])
-            newline.append(1)
-            ihategrandprix.append(newline)
+        for i in range(rows):
+            grandprix_is_too_hard.append([1]*(i+1))
+  
+        for i in range(2,rows):
+            for j in range(1,i):
+                grandprix_is_too_hard[i][j] = grandprix_is_too_hard[i-1][j-1] + grandprix_is_too_hard[i-1][j]
 
-        return ihategrandprix
-        pass
+        return grandprix_is_too_hard
+
+    pass
 
 def main():
     num = int(input())
